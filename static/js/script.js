@@ -93,3 +93,54 @@ function rpsFrontEnd(humanImageChoice,botImageChoice,finalMessage){
     document.getElementById('flex-box-rpx-div').append(botDiv);
 
 }
+// Challenge 4:
+let all_buttons=document.getElementsByTagName('button');
+// console.log(all_buttons);
+let copyAllButtons=[];
+for(let i=0;i<all_buttons.length;i++){
+    copyAllButtons.push(all_buttons[i].classList[1]);
+}
+console.log(copyAllButtons);
+
+function buttonColorChange(clickObject){
+    if(clickObject.value==='red'){
+        buttonsRed();
+    }
+    else if(clickObject.value==='green'){
+        buttonsGreen();
+    }
+    else if(clickObject.value==='reset'){
+        buttonColorReset();
+    }
+    else if(clickObject.value==='random'){
+        randomColors();
+    }
+}
+
+function buttonsRed(){
+    for(let i=0;i<all_buttons.length;i++){
+        all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+        all_buttons[i].classList.add('btn-danger');
+    }
+}
+function buttonsGreen(){
+    for(let i=0;i<all_buttons.length;i++){
+        all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+        all_buttons[i].classList.add('btn-success');
+    }
+}
+function buttonColorReset(){
+    for(let i=0;i<all_buttons.length;i++){
+        all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+        all_buttons[i].classList.add(copyAllButtons[i]);
+    }
+}
+
+function randomColors(){
+    let choices=['btn-primary','btn-danger','btn-warning','btn-success'];
+    for(let i=0;i<all_buttons.length;i++){
+        let rand=Math.floor(Math.random()*4);
+        all_buttons[i].classList.remove(all_buttons[i].classList[1]);
+        all_buttons[i].classList.add(choices[rand]);
+    }
+}
